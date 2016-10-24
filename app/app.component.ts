@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import {Hero} from "./hero";
 import {HeroService} from './hero.service';
 
@@ -82,9 +82,17 @@ import {HeroService} from './hero.service';
 })
 
 
-export class AppComponent {
-    //service construction
+export class AppComponent implements OnInit{
+    //service construction,create and declare vairable
     constructor(private heroService: HeroService) { 
+    }
+    
+    //use angular lifecycle OnInit to gain data to aviod constructor do too much work
+    ngOnInit() : void{
+      this.getHeroes();
+    }
+
+    getHeroes(){
       //promise then method
       this.heroService.getHeroes().then(heroes=>this.heroes=heroes);
     }
