@@ -83,9 +83,10 @@ import {HeroService} from './hero.service';
 
 
 export class AppComponent {
-    
+    //service construction
     constructor(private heroService: HeroService) { 
-      this.heroes = this.heroService.getHeroes();
+      //promise then method
+      this.heroService.getHeroes().then(heroes=>this.heroes=heroes);
     }
 
     title : string = 'Tour of Heroes';;
